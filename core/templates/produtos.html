@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Project X</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url  'dashboard'  %}">DashBoard <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'produtos'  %}">Produtos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'clientes' %}">Clientes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="{% url  'contato' %}">Contato</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h1>Produtos</h1>
+<div class="container">
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+
+        </tr>
+        </thead>
+        <tbody>
+    {% for produto in produtos %}
+        <tr>
+            <td scope="row"><a href="{% url  'produto' produto.id %}" > {{ produto.nome }} </a></td>
+            <td scope="row">{{ produto.preco }}</td>
+
+        </tr>
+    {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+<div style="margin-top:80px;">
+    <small class="float-center">Densenvovildo por Emerson Max 2021</small>
+</div>
+</body>
+</html>
